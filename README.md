@@ -1,1 +1,1 @@
-Welcome to my Leetcode solutionns repositories
+Welcome to my Leetcode solutions repositories
