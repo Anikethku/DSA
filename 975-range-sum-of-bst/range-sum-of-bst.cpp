@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        int sum=0;
+        vector<int>ans;
+        helper(root,ans,low,high);
+        for(int n:ans)
+        {
+            sum+=n;
+        }
+        return sum;
+    }
+    void helper(TreeNode* root, vector<int>&ans, int low, int high)
+    {
+        if(root==NULL) return;
+        helper(root->left,ans,low,high);
+        if(root->val>=low && root->val<=high) ans.push_back(root->val);
+        helper(root->right,ans,low,high);
+    }
+};
